@@ -21,7 +21,14 @@ class Dashboard extends Component {
     } else {
       if (Object.keys(profile).length > 0) {
         //TODO: Display Profile
-        dashboardContent = <h4>PROFILE HERE!</h4>
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">
+              Welcome{' '}
+              <Link to={`/profile/${profile.handle}`}>{user.name},</Link>
+            </p>
+          </div>
+        )
       } else {
         dashboardContent = (
           <div>
