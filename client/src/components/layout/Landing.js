@@ -32,6 +32,11 @@ class Landing extends Component {
                   </Link>
                 </div>
               </div>
+              <div className="row">
+                <h1 className="col-12 display-1 mt-5 text-center">
+                  Coming Soon
+                </h1>
+              </div>
             </div>
           </div>
         </div>
