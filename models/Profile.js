@@ -31,7 +31,7 @@ const ProfileSchema = new Schema({
   bio: {
     type: String,
   },
-  githubusername: {
+  charges: {
     type: String,
   },
   experience: [

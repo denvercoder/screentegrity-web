@@ -21,7 +21,7 @@ class CreateProfile extends Component {
       location: '',
       status: '',
       skills: '',
-      githubusername: '',
+      charges: '',
       bio: '',
       twitter: '',
       facebook: '',
@@ -52,9 +52,7 @@ class CreateProfile extends Component {
       profile.company = !isEmpty(profile.company) ? profile.company : ''
       profile.website = !isEmpty(profile.website) ? profile.website : ''
       profile.location = !isEmpty(profile.location) ? profile.location : ''
-      profile.githubusername = !isEmpty(profile.githubusername)
-        ? profile.githubusername
-        : ''
+      profile.charges = !isEmpty(profile.charges) ? profile.charges : ''
       profile.bio = !isEmpty(profile.bio) ? profile.bio : ''
       profile.social = !isEmpty(profile.social) ? profile.social : {}
       profile.twitter = !isEmpty(profile.social.twitter)
@@ -80,7 +78,7 @@ class CreateProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: skillsCSV,
-        githubusername: profile.githubusername,
+        charges: profile.charges,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
@@ -101,7 +99,7 @@ class CreateProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubusername: this.state.githubusername,
+      charges: this.state.charges,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -241,12 +239,12 @@ class CreateProfile extends Component {
                   info="List out your work skills, (separate items with a comma)"
                 />
                 <TextFieldGroup
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
+                  placeholder="Charges"
+                  name="charges"
+                  value={this.state.charges}
                   onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="Your GitHub Username, if you have one."
+                  error={errors.charges}
+                  info="If you would like to explain your history, do so here. This section is optional."
                 />
                 <TextAreaFieldGroup
                   placeholder="Short Bio"

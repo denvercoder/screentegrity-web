@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import ProfileHeader from './ProfileHeader'
 import ProfileAbout from './ProfileAbout'
 import ProfileCreds from './ProfileCreds'
-import ProfileGithub from './ProfileGithub'
+import ProfileCharges from './ProfileCharges'
 import Spinner from '../common/Spinner'
 
 import { getProfileByHandle } from '../../actions/profileActions'
@@ -38,9 +38,12 @@ class Profile extends Component {
             <div className="col-md-6">Something Here???</div>
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout />
-          <ProfileCreds />
-          <ProfileGithub />
+          <ProfileAbout profile={profile} />
+          <ProfileCreds
+            education={profile.education}
+            experience={profile.experience}
+          />
+          {profile.charges ? <ProfileCharges profile={profile} /> : null}
         </div>
       )
     }
@@ -58,7 +61,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  profile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
   getProfileByHandle: PropTypes.func.isRequired,
 }
 

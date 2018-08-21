@@ -18,7 +18,7 @@ class Landing extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12 text-center">
-                  <h1 className="display-3 mb-4">Screentegrity</h1>
+                  <h1 className="main-text display-1 mb-4">Screentegrity</h1>
                   <p className="lead"> A second chance to make a difference</p>
                   <hr />
                   <Link
