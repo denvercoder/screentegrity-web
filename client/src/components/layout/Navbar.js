@@ -19,12 +19,21 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/feed">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>
         </li>
         <li className="nav-item">
-          <a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
             <img
               className="rounded-circle"
               src={user.avatar}
@@ -59,9 +68,18 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
           <div className="container">
             <Link className="navbar-brand" to="/">
-              <img className="logo" src={logo} alt="Screentegrity | A Second Chance" />
+              <img
+                className="logo"
+                src={logo}
+                alt="Screentegrity | A Second Chance"
+              />
             </Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#mobile-nav"
+            >
               <span className="navbar-toggler-icon" />
             </button>
 
