@@ -103,13 +103,41 @@ router.post(
     const profileFields = {}
 
     profileFields.user = req.user.id
-    if (req.body.handle) profileFields.handle = req.body.handle
-    if (req.body.company) profileFields.company = req.body.company
-    if (req.body.website) profileFields.website = req.body.website
-    if (req.body.location) profileFields.location = req.body.location
-    if (req.body.bio) profileFields.bio = req.body.bio
-    if (req.body.status) profileFields.status = req.body.status
-    if (req.body.charges) profileFields.charges = req.body.charges
+    if (req.body.handle) {
+      profileFields.handle = req.body.handle
+    } else {
+      profileFields.handle = ''
+    }
+    if (req.body.company) {
+      profileFields.company = req.body.company
+    } else {
+      profileFields.company = ''
+    }
+    if (req.body.website) {
+      profileFields.website = req.body.website
+    } else {
+      profileFields.website = ''
+    }
+    if (req.body.location) {
+      profileFields.location = req.body.location
+    } else {
+      profileFields.location = ''
+    }
+    if (req.body.bio) {
+      profileFields.bio = req.body.bio
+    } else {
+      profileFields.bio = ''
+    }
+    if (req.body.status) {
+      profileFields.status = req.body.status
+    } else {
+      profileFields.status = ''
+    }
+    if (req.body.charges) {
+      profileFields.charges = req.body.charges
+    } else {
+      profileFields.charges = ''
+    }
 
     if (typeof req.body.skills !== 'undefined') {
       profileFields.skills = req.body.skills.split(',')

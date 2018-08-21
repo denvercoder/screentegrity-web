@@ -21,7 +21,7 @@ class CreateProfile extends Component {
       location: '',
       status: '',
       skills: '',
-      charges: '',
+      charges: ' ',
       bio: '',
       twitter: '',
       facebook: '',

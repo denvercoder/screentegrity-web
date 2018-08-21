@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Profile from './Profile'
 
 class ProfileCharges extends Component {
   render() {
@@ -8,21 +7,11 @@ class ProfileCharges extends Component {
 
     return (
       <div className="row">
-        <div className="col-md-6">
-          <h3 className="text-center text-info">Charge History</h3>
-          {profile.charges.length > 0 ? (
-            <ul className="list-group">{profile.charges}</ul>
-          ) : (
-            <p className="text-center">No History Listed</p>
-          )}
-        </div>
-        <div className="col-md-6">
-          <h3 className="text-center text-info">Charge History</h3>
-          {profile.charges.length > 0 ? (
-            <ul className="list-group">{profile.charges}</ul>
-          ) : (
-            <p className="text-center">No Education Listed</p>
-          )}
+        <div className="col-md-12">
+          <div className="card card-body bg-light mt-3">
+            <h3 className="text-center text-info">Explanation of Charges</h3>
+            <p className="lead">{profile.charges}</p>
+          </div>
         </div>
       </div>
     )
