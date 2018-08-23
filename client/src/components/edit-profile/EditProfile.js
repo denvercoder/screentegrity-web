@@ -169,12 +169,11 @@ class CreateProfile extends Component {
 
     const options = [
       { label: '* Select Status', value: 0 },
-      { label: 'Developer', value: 'Developer' },
-      { label: 'Junior Developer', value: 'Junior Developer' },
-      { label: 'Mid-level Developer', value: 'Mid-level Developer' },
-      { label: 'Senior Developer', value: 'Senior Developer' },
-      { label: 'Architect', value: 'Architect' },
-      { label: 'Intern', value: 'Intern' },
+      { label: 'Employed Full-Time', value: 'Employed Full-Time' },
+      { label: 'Employed Part-Time', value: 'Employed Part-Time' },
+      { label: 'Self-Employed Full-Time', value: 'Self-Employed Full-Time' },
+      { label: 'Self-Employed Part-Time', value: 'Self-Employed Part-Time' },
+      { label: 'Unemployed', value: 'Unemployed' },
       { label: 'Other', value: 'Other' },
     ]
 
