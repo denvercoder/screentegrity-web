@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const objectId = require('mongodb').ObjectId
 const passport = require('passport')
 const path = require('path')
 const jwt = require('jsonwebtoken')
