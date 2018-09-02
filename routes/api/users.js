@@ -1,8 +1,11 @@
 const express = require('express')
 const gravatar = require('gravatar')
 const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
+const _ = require('lodash')
+require('dotenv').config()
 
 const router = express.Router()
 
@@ -11,6 +14,18 @@ const validateLoginInput = require('../../validation/login')
 
 const User = require('../../models/User')
 const keys = require('../../config/keys')
+
+let transporter = nodemailer.createTransport({
+  host: process.env.MG_HOST,
+  port: 587,
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: process.env.MG_USERNAME,
+    pass: process.env.MG_PASSWORD,
+  },
+})
+
+const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
 // @route     POST api/users/register
 // @desc      Register New User
@@ -39,6 +54,29 @@ router.post('/register', (req, res) => {
         avatar,
         password: req.body.password,
       })
+
+      try {
+        const emailToken = jwt.sign(
+          {
+            newUser: _.pick(newUser, 'id'),
+          },
+          EMAIL_SECRET,
+          {
+            expiresIn: '1d',
+          },
+        )
+
+        const url = `http://localhost:5001/confirmation/${emailToken}`
+
+        transporter.sendMail({
+          from: 'support@screentegrity.com',
+          to: req.body.email,
+          subject: 'Confirm Email',
+          html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+        })
+      } catch (e) {
+        console.log(e)
+      }
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -73,6 +111,12 @@ router.post('/login', (req, res) => {
       errors.email = 'User not found'
       return res.status(404).json(errors)
     }
+
+    if (!user.confirmed) {
+      errors.confirm = 'Please confirm your email to login'
+      return res.status(403).json(errors)
+    }
+
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         //generate token
@@ -80,7 +124,7 @@ router.post('/login', (req, res) => {
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 86400 },
+          { expiresIn: '1d' },
           (err, token) => {
             res.json({
               success: true,

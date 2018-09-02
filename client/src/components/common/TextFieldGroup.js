@@ -6,7 +6,6 @@ const TextFieldGroup = ({
   name,
   placeholder,
   value,
-  label,
   error,
   info,
   type,

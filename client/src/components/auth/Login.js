@@ -59,6 +59,7 @@ class Login extends Component {
                 <p className="lead text-center">
                   Sign in to your Screentegrity account
                 </p>
+                <div style={{ color: 'red' }}>{errors.confirm}</div>
                 <form onSubmit={this.onSubmit}>
                   <TextFieldGroup
                     placeholder="Email Address"

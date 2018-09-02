@@ -1,12 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const objectId = require('mongodb').ObjectId
 const passport = require('passport')
 const path = require('path')
-
+const jwt = require('jsonwebtoken')
 const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
+const User = require('./models/User')
 
 const app = express()
 
@@ -16,6 +18,8 @@ app.use(bodyParser.json())
 
 // DB Config
 const db = require('./config/keys').DATABASE
+
+const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
 // Connect to MongoDB
 mongoose
@@ -47,6 +51,20 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
+app.get('/confirmation/:token', (req, res) => {
+  try {
+    console.log('confirming')
+    const {
+      newUser: { id },
+    } = jwt.verify(req.params.token, EMAIL_SECRET)
+    console.log(id)
+    User.updateOne({ _id: id }, { confirmed: true })
+  } catch (e) {
+    res.send('error')
+    console.log(e)
+  }
+  return res.redirect('http://localhost:3000/login')
+})
 const PORT = process.env.PORT || 5001
 
 app.listen(PORT, () => console.log('Listening on port', PORT))
