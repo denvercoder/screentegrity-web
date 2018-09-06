@@ -51,11 +51,9 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/confirmation/:token', async (req, res) => {
   try {
-    console.log('confirming')
     const {
       newUser: { id },
     } = jwt.verify(req.params.token, EMAIL_SECRET)
-    console.log(id)
     await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
   } catch (e) {
     res.send('error')
