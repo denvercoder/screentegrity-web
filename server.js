@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 
 // DB Config
 const db = require('./config/keys').DATABASE
+const keys = require('./config/keys')
 
 const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
@@ -54,12 +55,13 @@ app.get('/confirmation/:token', async (req, res) => {
     const {
       newUser: { id },
     } = jwt.verify(req.params.token, EMAIL_SECRET)
+    console.log(id)
     await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
   } catch (e) {
     res.send('error')
     console.log(e)
   }
-  return res.redirect('https://screentegrity.com/login')
+  return res.redirect(`${keys.BASE_CLIENT_URL}/login`)
 })
 const PORT = process.env.PORT || 5000
 

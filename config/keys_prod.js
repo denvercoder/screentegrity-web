@@ -4,4 +4,6 @@ module.exports = {
   MG_HOST: process.env.MG_HOST,
   MG_USERNAME: process.env.MG_USERNAME,
   MG_PASSWORD: process.env.MG_PASSWORD,
+  BASE_CLIENT_URL: 'https://screentegrity.com',
+  BASE_SERVER_URL: 'https://screentegrity.com',
 }
