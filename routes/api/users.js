@@ -16,12 +16,12 @@ const User = require('../../models/User')
 const keys = require('../../config/keys')
 
 let transporter = nodemailer.createTransport({
-  host: process.env.MG_HOST,
+  host: keys.MG_HOST,
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.MG_USERNAME,
-    pass: process.env.MG_PASSWORD,
+    user: keys.MG_USERNAME,
+    pass: keys.MG_PASSWORD,
   },
 })
 
@@ -48,7 +48,7 @@ router.post('/register', (req, res) => {
         d: 'mm', //Default
       })
 
-      const newUser = new User({
+      const user = new User({
         name: req.body.name,
         email: req.body.email,
         avatar,
@@ -66,7 +66,7 @@ router.post('/register', (req, res) => {
           },
         )
 
-        const url = `https://screentegrity.com/confirmation/${emailToken}`
+        const url = `http://localhost:5000/confirmation/${emailToken}`
 
         transporter.sendMail({
           from: 'support@screentegrity.com',

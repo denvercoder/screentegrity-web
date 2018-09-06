@@ -50,20 +50,20 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.get('/confirmation/:token', (req, res) => {
+app.get('/confirmation/:token', async (req, res) => {
   try {
     console.log('confirming')
     const {
       newUser: { id },
     } = jwt.verify(req.params.token, EMAIL_SECRET)
     console.log(id)
-    User.updateOne({ _id: id }, { confirmed: true })
+    await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
   } catch (e) {
     res.send('error')
     console.log(e)
   }
   return res.redirect('http://localhost:3000/login')
 })
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => console.log('Listening on port', PORT))
