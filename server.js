@@ -57,10 +57,12 @@ app.get('/confirmation/:token', async (req, res) => {
     } = jwt.verify(req.params.token, EMAIL_SECRET)
     console.log(id)
     await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
+    console.log('Updated Database')
   } catch (e) {
     res.send('error')
     console.log(e)
   }
+  console.log('bout to redirect')
   return res.redirect(`${keys.BASE_CLIENT_URL}/login`)
 })
 const PORT = process.env.PORT || 5000
