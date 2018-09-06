@@ -66,13 +66,13 @@ router.post('/register', (req, res) => {
           },
         )
 
-        const url = `http://localhost:5000/confirmation/${emailToken}`
+        const url = `https://screentegrity.com/confirmation/${emailToken}`
 
         transporter.sendMail({
           from: 'support@screentegrity.com',
           to: req.body.email,
           subject: 'Confirm Email',
-          html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+          html: `Please click this email to confirm your email: <a href="${url}">Click Here To Verify Your Email</a>`,
         })
       } catch (e) {
         console.log(e)
