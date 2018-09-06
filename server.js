@@ -59,7 +59,7 @@ app.get('/confirmation/:token', async (req, res) => {
     res.send('error')
     console.log(e)
   }
-  return res.redirect('http://localhost:3000/login')
+  return res.redirect('https://screentegrity.com/login')
 })
 const PORT = process.env.PORT || 5000
 
