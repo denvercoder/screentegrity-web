@@ -51,12 +51,13 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.get('/confirmation/:token', async (req, res) => {
+app.get('/api/confirmation/:token', async (req, res) => {
   logger.info('Starting confirmation')
   try {
     const {
       newUser: { id },
     } = jwt.verify(req.params.token, EMAIL_SECRET)
+
     await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
     logger.info('Database updated')
   } catch (e) {
