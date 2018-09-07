@@ -66,7 +66,7 @@ router.post('/register', (req, res) => {
           },
         )
 
-        const url = `${keys.BASE_SERVER_URL}/api/confirmation/${emailToken}`
+        const url = `https://screentegrity.com/confirmation/${emailToken}`
 
         transporter.sendMail({
           from: 'support@screentegrity.com',

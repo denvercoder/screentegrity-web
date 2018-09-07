@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.get('/api/confirmation/:token', async (req, res) => {
+app.post('/confirmation/:token', async (req, res) => {
   logger.info('Starting confirmation')
   try {
     const {

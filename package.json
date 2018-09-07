@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Screentegrity Web App",
   "main": "index.js",
+  "engines": {
+    "node": "10.9.0",
+    "npm": "6.2.0"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
