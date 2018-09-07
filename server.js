@@ -8,7 +8,6 @@ const users = require('./routes/api/users')
 const profile = require('./routes/api/profile')
 const posts = require('./routes/api/posts')
 const User = require('./models/User')
-const logger = require('heroku-logger')
 
 const app = express()
 
@@ -43,19 +42,17 @@ app.use('/api/profile', profile)
 app.use('/api/posts', posts)
 
 app.get('/confirmation/:token', async (req, res) => {
-  logger.info('Starting confirmation')
   try {
     const {
       newUser: { id },
     } = jwt.verify(req.params.token, EMAIL_SECRET)
 
     await User.findOneAndUpdate({ _id: id }, { $set: { confirmed: true } })
-    logger.info('Database updated')
   } catch (e) {
     res.send('error')
     console.log(e)
   }
-  logger.info('Starting redirect')
+
   return res.redirect(`${keys.BASE_CLIENT_URL}/login`)
 })
 
