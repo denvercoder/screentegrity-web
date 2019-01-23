@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-
+import Spinner from '../common/Spinner'
 import TextFieldGroup from '../common/TextFieldGroup'
 
 class Register extends Component {
@@ -53,7 +53,8 @@ class Register extends Component {
   render() {
     const { errors } = this.state
     //const gravatarLink = <Link to="https://gravatar.com">Gravatar</Link>
-
+    const {loading} = this.props.auth
+    console.log(loading)
     return (
       <div>
         <div className="register">
@@ -98,10 +99,12 @@ class Register extends Component {
                     onChange={this.onChange}
                     error={errors.password2}
                   />
+                  {
+                    loading ? <Spinner/> :
                   <input
                     type="submit"
                     className="btn btn-info btn-block mt-4"
-                  />
+                  />}
                 </form>
               </div>
             </div>

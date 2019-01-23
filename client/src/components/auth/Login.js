@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/authActions'
-
+import Spinner from '../common/Spinner'
 import TextFieldGroup from '../common/TextFieldGroup'
 
 class Login extends Component {
@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state
-
+    const {loading} = this.props.auth
     return (
       <div>
         <div className="login">
@@ -77,10 +77,12 @@ class Login extends Component {
                     onChange={this.onChange}
                     error={errors.password}
                   />
+                  {
+                    loading ? <Spinner/> :
                   <input
                     type="submit"
                     className="btn btn-info btn-block mt-4"
-                  />
+                  />}
                 </form>
               </div>
             </div>
