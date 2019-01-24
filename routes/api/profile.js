@@ -43,13 +43,16 @@ router.get('/all', (req, res) => {
     'bio location skills'
   ) /* Only return bio, location and skills fields*/
     .populate('user', ['name'])
+    .exec()
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = 'There are no profiles'
         return res.status(404).json(errors)
       }
-      const name = profile.user.name
-      profile.user.name = name.substring(0, name.indexof(' ') + 2)
+      for (var i = 0; i < profiles.length; i++) {
+        const name = user.name
+        user.name = name.substring(0, name.indexOf(' ') + 2)
+      }
       res.json(profiles)
     })
     .catch(err =>
