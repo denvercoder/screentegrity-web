@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state
-    const {loading} = this.props.auth
+    const { loading } = this.props.auth
     return (
       <div>
         <div className="login">

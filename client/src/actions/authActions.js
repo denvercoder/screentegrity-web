@@ -40,24 +40,24 @@ export const loginUser = userData => dispatch => {
       dispatch(setCurrentUser(decoded))
     })
     .catch(err => {
-      dispatch(stopLoading());
-      dispatch({ type: GET_ERRORS, payload: err.response.data });
+      dispatch(stopLoading())
+      dispatch({ type: GET_ERRORS, payload: err.response.data })
     })
 }
 
 export const loading = () => {
   return {
     type: LOADING
-  };
-};
+  }
+}
 
 //stop loading
 
 export const stopLoading = () => {
   return {
     type: NOT_LOADING
-  };
-};
+  }
+}
 
 export const setCurrentUser = decoded => {
   return {
