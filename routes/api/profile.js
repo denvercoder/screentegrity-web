@@ -50,8 +50,8 @@ router.get('/all', (req, res) => {
         return res.status(404).json(errors)
       }
       for (var i = 0; i < profiles.length; i++) {
-        const name = user.name
-        user.name = name.substring(0, name.indexOf(' ') + 2)
+        const name = profiles[i].user.name
+        profiles[i].user.name = name.substring(0, name.indexOf(' ') + 2)
       }
       res.json(profiles)
     })
