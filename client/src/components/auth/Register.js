@@ -53,7 +53,7 @@ class Register extends Component {
   render() {
     const { errors } = this.state
     //const gravatarLink = <Link to="https://gravatar.com">Gravatar</Link>
-    const {loading} = this.props.auth
+    const { loading } = this.props.auth
     console.log(loading)
     return (
       <div>
