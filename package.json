@@ -12,7 +12,6 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "eslint .",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "netlify-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
@@ -50,11 +49,6 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
-    "eslint-config-prettier": "^3.6.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "nodemon": "^1.18.3",
-    "prettier": "^1.16.1"
+    "nodemon": "^1.18.3"
   }
 }
