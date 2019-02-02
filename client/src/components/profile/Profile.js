@@ -19,7 +19,7 @@ class Profile extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.profile.profile === null && this.props.profile.loading) {
       this.props.history.push('/notfound')
     }
@@ -69,6 +69,8 @@ class Profile extends Component {
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
   getProfileByHandle: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

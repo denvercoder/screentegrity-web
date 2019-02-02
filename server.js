@@ -23,10 +23,7 @@ const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true },
-  )
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log('Database Connected'))
   .catch(err => console.log(err))
 

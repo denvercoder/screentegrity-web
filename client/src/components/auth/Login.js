@@ -22,7 +22,7 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/dashboard')
     }
@@ -77,12 +77,14 @@ class Login extends Component {
                     onChange={this.onChange}
                     error={errors.password}
                   />
-                  {
-                    loading ? <Spinner/> :
-                  <input
-                    type="submit"
-                    className="btn btn-info btn-block mt-4"
-                  />}
+                  {loading ? (
+                    <Spinner />
+                  ) : (
+                    <input
+                      type="submit"
+                      className="btn btn-info btn-block mt-4"
+                    />
+                  )}
                 </form>
               </div>
             </div>
@@ -97,6 +99,7 @@ Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

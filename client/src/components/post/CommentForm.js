@@ -19,7 +19,7 @@ class CommentForm extends Component {
     this.onChange = this.onChange.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors })
     }

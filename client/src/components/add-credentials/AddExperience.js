@@ -25,7 +25,7 @@ class AddExperience extends Component {
     this.onCheck = this.onCheck.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors })
     }
@@ -50,7 +50,7 @@ class AddExperience extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  onCheck(e) {
+  onCheck() {
     this.setState({
       disabled: !this.state.disabled,
       current: !this.state.current,
@@ -151,6 +151,7 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

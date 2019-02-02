@@ -4,7 +4,7 @@ import isEmpty from '../validation/is-empty'
 const initialState = {
   isAuthenticated: false,
   user: {},
-  loading: false
+  loading: false,
 }
 
 export default function(state = initialState, action) {
@@ -14,17 +14,17 @@ export default function(state = initialState, action) {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload,
-      };
-      case LOADING:
+      }
+    case LOADING:
       return {
         ...state,
-        loading: true
-      };
-      case NOT_LOADING:
+        loading: true,
+      }
+    case NOT_LOADING:
       return {
         ...state,
-        loading: false
-      };
+        loading: false,
+      }
     default:
       return state
   }

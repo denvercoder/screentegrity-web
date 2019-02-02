@@ -20,11 +20,11 @@ class ProfileAbout extends Component {
           <div className="card card-body bg-light mb-3">
             <h3 className="text-center text-info">
               {firstName}
-              's Bio
+              &apos;s Bio
             </h3>
             <p className="lead">
               {isEmpty(profile.bio) ? (
-                <span>{firstName} doesn't have a bio yet.</span>
+                <span>{firstName} doesn&apos;t have a bio yet.</span>
               ) : (
                 <span>{profile.bio}</span>
               )}

@@ -27,7 +27,7 @@ class Register extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors })
     }
@@ -99,12 +99,14 @@ class Register extends Component {
                     onChange={this.onChange}
                     error={errors.password2}
                   />
-                  {
-                    loading ? <Spinner/> :
-                  <input
-                    type="submit"
-                    className="btn btn-info btn-block mt-4"
-                  />}
+                  {loading ? (
+                    <Spinner />
+                  ) : (
+                    <input
+                      type="submit"
+                      className="btn btn-info btn-block mt-4"
+                    />
+                  )}
                 </form>
               </div>
             </div>
@@ -119,6 +121,7 @@ Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
