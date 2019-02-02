@@ -6,15 +6,15 @@ import { GET_ERRORS, SET_CURRENT_USER, LOADING, NOT_LOADING } from './types'
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
-  dispatch(loading());
+  dispatch(loading())
   axios
     .post('/api/users/register', userData)
-    .then(res => {
-      history.push('/login');
-      dispatch(stopLoading());
+    .then(() => {
+      history.push('/login')
+      dispatch(stopLoading())
     })
-    .catch(err =>{
-      dispatch(stopLoading());
+    .catch(err => {
+      dispatch(stopLoading())
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
@@ -24,7 +24,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
-  dispatch(loading());
+  dispatch(loading())
   axios
     .post('/api/users/login', userData)
     .then(res => {
@@ -47,7 +47,7 @@ export const loginUser = userData => dispatch => {
 
 export const loading = () => {
   return {
-    type: LOADING
+    type: LOADING,
   }
 }
 
@@ -55,7 +55,7 @@ export const loading = () => {
 
 export const stopLoading = () => {
   return {
-    type: NOT_LOADING
+    type: NOT_LOADING,
   }
 }
 
